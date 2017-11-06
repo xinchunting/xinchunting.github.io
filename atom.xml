@@ -66,9 +66,9 @@
     
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
     
-      <category term="git" scheme="http://yoursite.com/tags/git/"/>
-    
       <category term="nodejs" scheme="http://yoursite.com/tags/nodejs/"/>
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
     
   </entry>
   
