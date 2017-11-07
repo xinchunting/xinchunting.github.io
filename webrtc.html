@@ -101,8 +101,8 @@ able=no">
 </script>
 <script>
     function sendToP2(data){
-        answererWin.postMessage(JSON.stringify(data) ,
-            window.location)
+        console.log(data);
+        answererWin.postMessage(JSON.stringify(data) , window.location)
 
     }
     function receiveMessage(data){
