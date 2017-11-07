@@ -36,15 +36,11 @@ able=no">
     var offerer
         ,answererWin
 
-    window.RTCPeerConnection = window.mozRTCPeerConnection || window.webkit
-    RTCPeerConnection;
-    window.RTCSessionDescription = window.mozRTCSessionDescription || windo
-    w.RTCSessionDescription;
-    window.RTCIceCandidate = window.mozRTCIceCandidate || window.RTCIceCand
-    idate;
+    window.RTCPeerConnection = window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+    window.RTCSessionDescription = window.mozRTCSessionDescription || window.RTCSessionDescription;
+    window.RTCIceCandidate = window.mozRTCIceCandidate || window.RTCIceCandidate;
 
-    navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitG
-    etUserMedia;
+    navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
     window.URL = window.webkitURL || window.URL;
 
     window.iceServers = {
@@ -113,12 +109,10 @@ able=no">
         data = JSON.parse(data.data)
         switch ( data.action) {
             case 'answer' :
-                offerer.setRemoteDescription(ne
-                w RTCSessionDescription(data.answer))
+                offerer.setRemoteDescription(new RTCSessionDescription(data.answer))
                 break
             case "candidate":
-                offerer.addIceCandidate(new RTC
-                IceCandidate(data.candidate))
+                offerer.addIceCandidate(new RTCIceCandidate(data.candidate))
                 break
 
         }
@@ -126,8 +120,7 @@ able=no">
     }
 
 
-    window.addEventListener("message", receiveMessage, fals
-    e)
+    window.addEventListener("message", receiveMessage, false)
     answererWin = window.open('webrtc2.html' ,'t')
     getUserMedia(function (video_stream) {
         offererPeer(video_stream)
