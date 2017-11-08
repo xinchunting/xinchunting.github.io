@@ -1,11 +1,3 @@
-/*
- *  Copyright (c) 2015 The WebRTC project authors. All Rights Reserved.
- *
- *  Use of this source code is governed by a BSD-style license
- *  that can be found in the LICENSE file in the root of the source
- *  tree.
- */
-
 'use strict';
 
 var startButton = document.getElementById('startButton');
@@ -34,7 +26,7 @@ remoteVideo.addEventListener('loadedmetadata', function() {
 remoteVideo.onresize = function() {
   trace('Remote video size changed to ' +
     remoteVideo.videoWidth + 'x' + remoteVideo.videoHeight);
-  // We'll use the first onsize callback as an indication that video has started
+  // We'll use the first onresize callback as an indication that video has started
   // playing out.
   if (startTime) {
     var elapsedTime = window.performance.now() - startTime;
@@ -62,7 +54,8 @@ function getOtherPc(pc) {
 function gotStream(stream) {
   trace('Received local stream');
   localVideo.srcObject = stream;
-  localStream = stream;
+  // Add localStream to global scope so it's accessible from the browser console
+  window.localStream = localStream = stream;
   callButton.disabled = false;
 }
 
@@ -70,7 +63,7 @@ function start() {
   trace('Requesting local stream');
   startButton.disabled = true;
   navigator.mediaDevices.getUserMedia({
-    audio: true,
+    audio: false,
     video: true
   })
   .then(gotStream)
@@ -93,12 +86,14 @@ function call() {
     trace('Using audio device: ' + audioTracks[0].label);
   }
   var servers = null;
-  pc1 = new RTCPeerConnection(servers);
+  // Add pc1 to global scope so it's accessible from the browser console
+  window.pc1 = pc1 = new RTCPeerConnection(servers);
   trace('Created local peer connection object pc1');
   pc1.onicecandidate = function(e) {
     onIceCandidate(pc1, e);
   };
-  pc2 = new RTCPeerConnection(servers);
+  // Add pc2 to global scope so it's accessible from the browser console
+  window.pc2 = pc2 = new RTCPeerConnection(servers);
   trace('Created remote peer connection object pc2');
   pc2.onicecandidate = function(e) {
     onIceCandidate(pc2, e);
@@ -109,16 +104,9 @@ function call() {
   pc2.oniceconnectionstatechange = function(e) {
     onIceStateChange(pc2, e);
   };
-  pc2.ontrack = gotRemoteStream;
+  pc2.onaddstream = gotRemoteStream;
 
-  localStream.getTracks().forEach(
-    function(track) {
-      pc1.addTrack(
-        track,
-        localStream
-      );
-    }
-  );
+  pc1.addStream(localStream);
   trace('Added local stream to pc1');
 
   trace('pc1 createOffer start');
@@ -173,10 +161,9 @@ function onSetSessionDescriptionError(error) {
 }
 
 function gotRemoteStream(e) {
-  if (remoteVideo.srcObject !== e.streams[0]) {
-    remoteVideo.srcObject = e.streams[0];
-    trace('pc2 received remote stream');
-  }
+  // Add remoteStream to global scope so it's accessible from the browser console
+  window.remoteStream = remoteVideo.srcObject = e.stream;
+  trace('pc2 received remote stream');
 }
 
 function onCreateAnswerSuccess(desc) {
@@ -198,17 +185,19 @@ function onCreateAnswerSuccess(desc) {
 }
 
 function onIceCandidate(pc, event) {
-  getOtherPc(pc).addIceCandidate(event.candidate)
-  .then(
-    function() {
-      onAddIceCandidateSuccess(pc);
-    },
-    function(err) {
-      onAddIceCandidateError(pc, err);
-    }
-  );
-  trace(getName(pc) + ' ICE candidate: \n' + (event.candidate ?
-      event.candidate.candidate : '(null)'));
+  if (event.candidate) {
+    getOtherPc(pc).addIceCandidate(
+      new RTCIceCandidate(event.candidate)
+    ).then(
+      function() {
+        onAddIceCandidateSuccess(pc);
+      },
+      function(err) {
+        onAddIceCandidateError(pc, err);
+      }
+    );
+    trace(getName(pc) + ' ICE candidate: \n' + event.candidate.candidate);
+  }
 }
 
 function onAddIceCandidateSuccess(pc) {
@@ -234,4 +223,17 @@ function hangup() {
   pc2 = null;
   hangupButton.disabled = true;
   callButton.disabled = false;
+}
+
+
+function trace(text) {
+  if (text[text.length - 1] === '\n') {
+    text = text.substring(0, text.length - 1);
+  }
+  if (window.performance) {
+    var now = (window.performance.now() / 1000).toFixed(3);
+    console.log(now + ': ' + text);
+  } else {
+    console.log(text);
+  }
 }
