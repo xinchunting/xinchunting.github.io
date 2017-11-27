@@ -17,12 +17,12 @@
 <!--<![endif]-->
 
 <head>
-  <title>SELECT | X.x</title>
+  <title>SELECT | X x</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content="X.x">
+    <meta name="generator" content="X x">
     <meta name="author" content="xXx">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -30,7 +30,7 @@
     <!-- Favicon, (keep icon in root folder) -->
     <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
 
-    <link rel="alternate" href="/atom.xml" title="X.x" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="X x" type="application/atom+xml">
     <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
     
     <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
@@ -160,7 +160,7 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2017-11-27T06:08:50.495Z" itemprop="datePublished">
+      <time datetime="2017-11-27T06:13:57.174Z" itemprop="datePublished">
           2017-11-27
       </time>
     
@@ -174,7 +174,7 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<p>这篇文章主要是做一下Java的查询算法的整理,</p>
+      		<p>这篇文章主要是做一下Java的查询算法的整理,<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="二分法查找"><a href="#二分法查找" class="headerlink" title="二分法查找"></a>二分法查找</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">int BinarySearch1(int a[], int value, int n)</div><div class="line">&#123;</div><div class="line">    int low, high, mid;</div><div class="line">    low = 0;</div><div class="line">    high = n-1;</div><div class="line">    <span class="keyword">while</span>(low&lt;=high)</div><div class="line">    &#123;</div><div class="line">        mid = (low+high)/2;</div><div class="line">        <span class="keyword">if</span>(a[mid]==value)</div><div class="line">            <span class="built_in">return</span> mid;</div><div class="line">        <span class="keyword">if</span>(a[mid]&gt;value)</div><div class="line">            high = mid-1;</div><div class="line">        <span class="keyword">if</span>(a[mid]&lt;value)</div><div class="line">            low = mid+1;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">return</span> -1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="二分法查找-递归"><a href="#二分法查找-递归" class="headerlink" title="二分法查找(递归)"></a>二分法查找(递归)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">int BinarySearch2(int a[], int value, int low, int high)</div><div class="line">&#123;</div><div class="line">    int mid = low+(high-low)/2;</div><div class="line">    <span class="keyword">if</span>(a[mid]==value)</div><div class="line">        <span class="built_in">return</span> mid;</div><div class="line">    <span class="keyword">if</span>(a[mid]&gt;value)</div><div class="line">        <span class="built_in">return</span> BinarySearch2(a, value, low, mid-1);</div><div class="line">    <span class="keyword">if</span>(a[mid]&lt;value)</div><div class="line">        <span class="built_in">return</span> BinarySearch2(a, value, mid+1, high);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
             <div class="clearfix"></div>
