@@ -160,7 +160,7 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2017-11-27T08:53:13.211Z" itemprop="datePublished">
+      <time datetime="2017-11-27T09:04:07.987Z" itemprop="datePublished">
           2017-11-27
       </time>
     
@@ -174,7 +174,7 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<p>这篇文章主要是做一下JavaxXx的查询算法的整理,</p>
+      		<p>这篇文章主要是做一下Java的查询算法的整理,xXx</p>
 <h3 id="二分法查找"><a href="#二分法查找" class="headerlink" title="二分法查找"></a>二分法查找</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">int BinarySearch1(int a[], int value, int n)</div><div class="line">&#123;</div><div class="line">    int low, high, mid;</div><div class="line">    low = 0;</div><div class="line">    high = n-1;</div><div class="line">    while(low&lt;=high)</div><div class="line">    &#123;</div><div class="line">        mid = (low+high)/2;</div><div class="line">        if(a[mid]==value)</div><div class="line">            return mid;</div><div class="line">        if(a[mid]&gt;value)</div><div class="line">            high = mid-1;</div><div class="line">        if(a[mid]&lt;value)</div><div class="line">            low = mid+1;</div><div class="line">    &#125;</div><div class="line">    return -1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="二分法查找-递归"><a href="#二分法查找-递归" class="headerlink" title="二分法查找(递归)"></a>二分法查找(递归)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">int BinarySearch2(int a[], int value, int low, int high)</div><div class="line">&#123;</div><div class="line">    int mid = low+(high-low)/2;</div><div class="line">    if(a[mid]==value)</div><div class="line">        return mid;</div><div class="line">    if(a[mid]&gt;value)</div><div class="line">        return BinarySearch2(a, value, low, mid-1);</div><div class="line">    if(a[mid]&lt;value)</div><div class="line">        return BinarySearch2(a, value, mid+1, high);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
             <div class="clearfix"></div>
@@ -182,13 +182,13 @@
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2017/11/27/sort/" style="float: left;">
-        ← SORT
+    <a class="pull-left" href="/2017/11/27/hello-world/" style="float: left;">
+        ← Hello World
     </a>
     
     
-    <a class="pull-right" href="/2017/11/03/hello-world/">
-        Hello World →
+    <a class="pull-right" href="/2017/11/27/sort/">
+        SORT →
     </a>
     
 </nav>

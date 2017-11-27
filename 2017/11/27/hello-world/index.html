@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>SORT | X x</title>
+  <title>Hello World | X x</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -160,34 +160,43 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2017-11-27T08:53:13.215Z" itemprop="datePublished">
+      <time datetime="2017-11-27T09:04:07.991Z" itemprop="datePublished">
           2017-11-27
       </time>
     
     
     | 
-    <a href='/tags/java/'>java</a>
+    <a href='/tags/hexo/'>hexo</a>,
+    
+    <a href='/tags/git/'>git</a>,
+    
+    <a href='/tags/nodejs/'>nodejs</a>
     
     
 </span>
-                <h1>SORT</h1>
+                <h1>Hello World</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<p>这篇文章主要是做一下Java的排序算法的整理,xXx</p>
-<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * 冒泡排序</div><div class="line"> */</div><div class="line">public class BubbleSort &#123;</div><div class="line">　　public static void main(String[] args) &#123;</div><div class="line">　　　　int[] arr=&#123;6,3,8,2,9,1&#125;;</div><div class="line">　　　　System.out.println(<span class="string">"排序前数组为："</span>);</div><div class="line">　　　　<span class="keyword">for</span>(int num:arr)&#123;</div><div class="line">　　　　　　System.out.print(num+<span class="string">" "</span>);</div><div class="line">　　　　&#125;</div><div class="line">　　　　<span class="keyword">for</span>(int i=0;i&lt;arr.length-1;i++)&#123;//外层循环控制排序趟数</div><div class="line">　　　　　　<span class="keyword">for</span>(int j=0;j&lt;arr.length-1-i;j++)&#123;//内层循环控制每一趟排序多少次</div><div class="line">　　　　　　　　<span class="keyword">if</span>(arr[j]&gt;arr[j+1])&#123;</div><div class="line">　　　　　　　　　　int temp=arr[j];</div><div class="line">　　　　　　　　　　arr[j]=arr[j+1];</div><div class="line">　　　　　　　　　　arr[j+1]=temp;</div><div class="line">　　　　　　　　&#125;</div><div class="line">　　　　　　&#125;</div><div class="line">　　　　&#125; </div><div class="line">　　　　System.out.println();</div><div class="line">　　　　System.out.println(<span class="string">"排序后的数组为："</span>);</div><div class="line"> 　　　　<span class="keyword">for</span>(int num:arr)&#123;</div><div class="line"> 　　　　　　System.out.print(num+<span class="string">" "</span>);</div><div class="line"> 　　　　&#125; </div><div class="line">　　&#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<h3 id="插入式排序"><a href="#插入式排序" class="headerlink" title="插入式排序"></a>插入式排序</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class InsertSort &#123;</div><div class="line">    public static void insertSort(int[] a) &#123;</div><div class="line">        int i, j, insertNote;// 要插入的数据</div><div class="line">        <span class="keyword">for</span> (i = 1; i &lt; a.length; i++) &#123;// 从数组的第二个元素开始循环将数组中的元素插入</div><div class="line">            insertNote = a[i];// 设置数组中的第2个元素为第一次循环要插入的数据</div><div class="line">            j = i - 1;</div><div class="line">            <span class="keyword">while</span> (j &gt;= 0 &amp;&amp; insertNote &lt; a[j]) &#123;</div><div class="line">                a[j + 1] = a[j];// 如果要插入的元素小于第j个元素,就将第j个元素向后移动</div><div class="line">                j--;</div><div class="line">            &#125;</div><div class="line">            a[j + 1] = insertNote;// 直到要插入的元素不小于第j个元素,将insertNote插入到数组中</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        int a[] = &#123; 38,65,97,76,13,27,49 &#125;;</div><div class="line">        insertSort(a);</div><div class="line">        System.out.println(Arrays.toString(a));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class SelectionSort &#123;</div><div class="line"> </div><div class="line">    public static void selectionSort(int[] a) &#123;</div><div class="line">        int n = a.length;</div><div class="line">        <span class="keyword">for</span> (int i = 0; i &lt; n; i++) &#123;</div><div class="line">            int k = i;</div><div class="line">            // 找出最小值的小标</div><div class="line">            <span class="keyword">for</span> (int j = i + 1; j &lt; n; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (a[j] &lt; a[k]) &#123;</div><div class="line">                    k = j;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            // 将最小值放到排序序列末尾</div><div class="line">            <span class="keyword">if</span> (k &gt; i) &#123;</div><div class="line">                int tmp = a[i];</div><div class="line">                a[i] = a[k];</div><div class="line">                a[k] = tmp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        int[] b = &#123; 49, 38, 65, 97, 76, 13, 27, 50 &#125;;</div><div class="line">        selectionSort(b);</div><div class="line">        <span class="keyword">for</span> (int i : b)</div><div class="line">            System.out.print(i + <span class="string">" "</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public void <span class="function"><span class="title">listSort1</span></span>()&#123;</div><div class="line">    List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();</div><div class="line">    list.add(1);</div><div class="line">    list.add(55);</div><div class="line">    list.add(9);</div><div class="line">    list.add(0);</div><div class="line">    list.add(2);</div><div class="line">    Collections.sort(list);//使用Collections的sort方法</div><div class="line">    <span class="keyword">for</span>(int a :list)&#123;</div><div class="line">        System.out.println(a);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      		<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br>xXx</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2017/11/27/select/" style="float: left;">
-        ← SELECT
-    </a>
     
+    <a class="pull-right" href="/2017/11/27/select/">
+        SELECT →
+    </a>
     
 </nav>
 
