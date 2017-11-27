@@ -8,6 +8,7 @@
     Returns a promise that's fulfilled when done, or rejected if
     interrupted
  */
+
 var smooth_scroll_to = function(element, target, duration) {
     target = Math.round(target);
     duration = Math.round(duration);
